@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: const PokeDetail(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class PokeDetail extends StatelessWidget {
+  const PokeDetail({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
