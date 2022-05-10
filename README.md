@@ -1,6 +1,8 @@
 # flutter_pokemon
 
-A new Flutter project.
+Flutterでポケモン図鑑を作ります。  
+
+[すぎっと@フルペラットエンジニア](https://github.com/sugitlab)さんによる[ポケモンから学ぶFlutter](https://zenn.dev/sugitlab/books/flutter_poke_app_handson)をもとにポケモン図鑑を作ります
 
 ## Getting Started
 
