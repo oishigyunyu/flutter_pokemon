@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import './poke_list_item.dart';
 
 void main() {
@@ -36,11 +35,7 @@ class _TopPageState extends State<TopPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: ListView.builder(
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-          itemCount: 898,
-          itemBuilder: (context, index) => PokeListItem(index: index),
-        ),
+        child: currentbnb == 0 ? const PokeList() : const Settings(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) => {
