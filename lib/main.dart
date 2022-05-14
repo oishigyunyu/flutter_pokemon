@@ -78,12 +78,71 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: const [
-        ListTile(
+      children: [
+        const ListTile(
           leading: Icon(Icons.lightbulb),
           title: Text('Dark/Light Mode'),
-        )
+        ),
+        SwitchListTile(
+          title: const Text('Switch'),
+          value: true,
+          onChanged: (yes) => {},
+        ),
+        CheckboxListTile(
+          title: const Text('Checkbox'),
+          value: true,
+          onChanged: (yes) => {},
+        ),
+        RadioListTile(
+          title: const Text('Radio'),
+          value: true,
+          groupValue: true,
+          onChanged: (yes) => {},
+        ),
       ],
+    );
+  }
+}
+
+class ThemeModeSelectionPage extends StatefulWidget {
+  const ThemeModeSelectionPage({Key? key}) : super(key: key);
+
+  @override
+  _ThemeModeSelectionPageState createState() => _ThemeModeSelectionPageState();
+}
+
+class _ThemeModeSelectionPageState extends State<ThemeModeSelectionPage> {
+  ThemeMode _current = ThemeMode.system;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Column(children: [
+          ListTile(
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ),
+          RadioListTile<ThemeMode>(
+            title: const Text('System'),
+            value: ThemeMode.system,
+            groupValue: _current,
+            onChanged: (val) => {setState(() => _current = val!)},
+          ),
+          RadioListTile<ThemeMode>(
+            value: ThemeMode.dark,
+            groupValue: _current,
+            onChanged: (val) => {setState(() => _current = val!)},
+          ),
+          RadioListTile<ThemeMode>(
+            value: ThemeMode.light,
+            groupValue: _current,
+            onChanged: (val) => {setState(() => _current = val!)},
+          ),
+        ]),
+      ),
     );
   }
 }
