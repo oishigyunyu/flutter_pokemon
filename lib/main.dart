@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import './poke_list_item.dart';
 
 void main() {
@@ -22,9 +23,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class TopPage extends StatelessWidget {
+class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);
 
+  @override
+  _TopPageState createState() => _TopPageState();
+}
+
+class _TopPageState extends State<TopPage> {
+  int currentbnb = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +43,12 @@ class TopPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (index) => {},
+        onTap: (index) => {
+          setState(
+            () => currentbnb = index,
+          )
+        },
+        currentIndex: currentbnb,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
@@ -48,6 +60,35 @@ class TopPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class PokeList extends StatelessWidget {
+  const PokeList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+      itemCount: 898,
+      itemBuilder: (context, index) => PokeListItem(index: index),
+    );
+  }
+}
+
+class Settings extends StatelessWidget {
+  const Settings({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: const [
+        ListTile(
+          leading: Icon(Icons.lightbulb),
+          title: Text('Dark/Light Mode'),
+        )
+      ],
     );
   }
 }
